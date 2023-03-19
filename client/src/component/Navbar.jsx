@@ -110,7 +110,8 @@ export default function Header() {
             {state.isLogin === true ? (
               state.user.is_admin === true ? (
                 <Nav className="ms-auto gap-3">
-                  <NavDropdown align="end"
+                  <NavDropdown
+                    align="end"
                     title={
                       <img src={Admin} width="40px" height="40px" alt="" />
                     }
@@ -145,16 +146,24 @@ export default function Header() {
                     <div className="me-3">
                       <img src={Cart} width="35px" height="32.26px" alt="" />
                     </div>
-                    <Badge
-                      pill
-                      bg="danger"
-                      style={{ position: "absolute", top: 20, right: 5 }}
-                    >
-                      {/* {totalQty} */}
-                    </Badge>
+                    {UserCarts.filter((cart) => cart.user_id === state.user.id)
+                      .length > 0 ? (
+                      <Badge
+                        pill
+                        bg="danger"
+                        style={{ position: "absolute", top: 20, right: 5 }}
+                      >
+                        {
+                          UserCarts.filter(
+                            (cart) => cart.user_id === state.user.id
+                          ).length
+                        }
+                      </Badge>
+                    ) : null}
                   </NavLink>
 
-                  <NavDropdown align="end"
+                  <NavDropdown
+                    align="end"
                     title={
                       <img src={Profile} width="40px" height="40px" alt="" />
                     }
