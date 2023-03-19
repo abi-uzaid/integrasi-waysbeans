@@ -114,22 +114,22 @@ export default function ListProduct() {
                   >
                     {item.description}
                   </td>
-                  <td className="pt-4 pb-4 ps-5 pe-5">
+                  <td style={{ width: "15rem" }}>
                     <Button
-                      onClick={() => handleDelete(item.id)}
-                      type="submit"
-                      className="btn-danger"
-                      size="sm"
+                      onClick={() => deleteProduct(item.id)}
+                      variant="danger"
+                      className="py-0 me-2 button-delete mb-2"
+                      style={{ width: "48%" }}
                     >
-                      Delete
+                      delete
                     </Button>
                     <Button
-                      onClick={() => handleUpdate(item.id)}
-                      className="btn-success mt-3"
-                      type="submit"
-                      size="sm"
+                      onClick={() => navigate(`/update-product/${item.id}`)}
+                      variant="success"
+                      className="py-0 button-update mb-2"
+                      style={{ width: "48%" }}
                     >
-                      Update
+                      update
                     </Button>
                   </td>
                 </tr>
