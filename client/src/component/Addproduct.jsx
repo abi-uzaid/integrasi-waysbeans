@@ -13,7 +13,7 @@ import { API } from "../config/api";
 export default function AddProduct() {
   const navigate = useNavigate();
 
-  const [imageUrl, setImageUrl] = useState("./image/1.webp");
+  const [imageUrl, setImageUrl] = useState("/image/1.webp");
 
   const [formAddProduct, setformAddProduct] = useState({
     id: 0,
