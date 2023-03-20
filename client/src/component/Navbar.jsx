@@ -25,9 +25,9 @@ export default function Header() {
   let navigate = useNavigate();
   const [state, dispatch] = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(true);
-  const [UserCarts, SetUserCarts] = useState([]);
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
+  const [UserCarts, SetUserCarts] = useState([]);
   // const [totalQty, setTotalQty] = useState(0);
 
   useEffect(() => {
@@ -149,28 +149,17 @@ export default function Header() {
                 </Nav>
               ) : (
                 <Nav className="ms-auto">
-                  <NavLink
-                    to="/cart"
-                    className="position-relative d-inline-flex align-items-center"
-                  >
+                  <NavLink to="/cart" className="position-relative d-inline-flex align-items-center">
                     <div className="me-3">
                       <img src={Cart} width="35px" height="32.26px" alt="" />
                     </div>
-                    {UserCarts.filter((cart) => cart.user_id === state.user.id)
-                      .length > 0 ? (
-                      <Badge
-                        pill
-                        bg="danger"
-                        style={{ position: "absolute", top: 20, right: 5 }}
-                      >
-                        {
-                          UserCarts.filter(
-                            (cart) => cart.user_id === state.user.id
-                          ).length
-                        }
-                      </Badge>
+                    {UserCarts.filter((cart) => cart.user_id === state.user.id).length > 0 ? (
+                    <Badge pill bg="danger" style={{ position: "absolute", top: 20, right: 5 }}>
+                    {UserCarts.filter((cart) => cart.user_id === state.user.id).length}
+                    </Badge>
                     ) : null}
                   </NavLink>
+
 
                   <NavDropdown
                     align="end"
