@@ -25,6 +25,7 @@ export default function Header() {
   let navigate = useNavigate();
   const [state, dispatch] = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(true);
+  const [UserCarts, SetUserCarts] = useState([]);
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
   // const [totalQty, setTotalQty] = useState(0);
@@ -82,6 +83,15 @@ export default function Header() {
     handleClose(true);
     setShowRegister(true);
   };
+
+  useQuery("usercartsCache", async () => {
+    try {
+      const response = await API.get("/carts");
+      SetUserCarts(response.data.data);
+    } catch (error) {
+      return;
+    }
+  });
 
   const logout = () => {
     dispatch({
